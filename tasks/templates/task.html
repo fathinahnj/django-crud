@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="stats-container">
+        <div class="details">
+          <h1>Todo App</h1>
+          <p>Keep it up!</p>
+          <div class="progressBar">
+            <div id="progress" class="progress"></div>
+          </div>
+        </div>
+        <div class="stats-numbers">
+          <p id="numbers" class="numbers">0 / 0</p>
+        </div>
+      </div>
+
+      <!-- Task input form -->
+      <form>
+        <input id="taskInput" type="text" placeholder="Add in a new task" />
+        <button id="newTask" type="submit" class="btn">+</button>
+      </form>
+
+      <!-- Task list -->
+      <ul id="task-list" class="task-list">
+        <!-- Task items will be dynamically added here by JavaScript -->
+      </ul>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
