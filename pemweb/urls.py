@@ -24,7 +24,8 @@ from django.contrib import admin
 from django.urls import path
 from tasks import views
 
+# URLConf, gunanya untuk berkomunikasi antar app (pemweb, tasks)
 urlpatterns = [
-    path('', views.task_view, name='home'),  # Default route for the empty path
-    path('task/', views.task_view, name='task'),
+    path('', views.task_view, name='task'),  # Default route for the empty path
+    # path('task/', views.task_view, name='task'),
 ]
