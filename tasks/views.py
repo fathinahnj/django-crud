@@ -10,3 +10,8 @@ def taskrec(request):
   task = Tasks(tasklist=x)
   task.save()
   return redirect("/")
+
+def delete(request, id):
+  task = Tasks.objects.get(id=id)
+  task.delete()
+  return redirect("/")
