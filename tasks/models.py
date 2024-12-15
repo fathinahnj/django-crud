@@ -5,5 +5,6 @@ from django.db import models
 
 # datasetnya : task_id saja??
 
-class Tasks(models.Model):()
+class Tasks(models.Model):
+  tasklist=models.CharField(max_length=300, null=True, blank=True)
   
