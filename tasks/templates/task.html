@@ -24,8 +24,9 @@
       </div>
 
       <!-- Task input form -->
-      <form>
-        <input id="taskInput" type="text" placeholder="Add in a new task" />
+      <form action="{% url 'task'%}" method="post">
+        {% csrf_token %} 
+        <input id="taskInput" type="text" name="inputtask" placeholder="Add in a new task" />
         <button id="newTask" type="submit" class="btn">+</button>
       </form>
 
