@@ -62,10 +62,11 @@ $(document).ready(function () {
               <p>${task.text}</p>
             </div>
             <div class="task-actions">
-              <a href="#" class="edit-task">
+              {% csrf_token %} 
+              <a href="{% url 'taskrec' %}" class="edit-task" name="inputtask">
                 <img src="/static/images/edit.png" alt="Edit" class="action-icon" />
               </a>
-              <a href="#" class="delete-task">
+              <a href="delete/{{x.id}}" class="delete-task">
                 <img src="/static/images/bin.png" alt="Delete" class="action-icon" />
               </a>
             </div>

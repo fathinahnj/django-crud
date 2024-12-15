@@ -25,7 +25,7 @@
 
       <!-- Task input form -->
       <form action="{% url 'task'%}" method="post">
-        {% csrf_token %} 
+        {% comment %} {% csrf_token %}  {% endcomment %}
         <input id="taskInput" type="text" name="inputtask" placeholder="Add in a new task" />
         <button id="newTask" type="submit" class="btn">+</button>
       </form>
