@@ -29,10 +29,12 @@
         <button id="newTask" type="submit" class="btn">+</button>
       </form>
 
-      {% for x in task %}
 
       <!-- Task list -->
       <ul id="task-list" class="task-list">
+        {% for x in task %}
+          <li>{{x.id}}</li>
+        {% endfor %}
         <!-- Task items will be dynamically added here by JavaScript -->
       </ul>
     </div>
