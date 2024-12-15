@@ -15,3 +15,7 @@ def delete(request, id):
   task = Tasks.objects.get(id=id)
   task.delete()
   return redirect("/")
+
+def update(request, id):
+  task = Tasks.objects.get(id=id)
+  return render(request, 'update.html', {'task':task})
