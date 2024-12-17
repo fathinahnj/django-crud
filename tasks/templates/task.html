@@ -10,10 +10,11 @@
   </head>
   <body>
     <div class="container">
+      <!-- Stats Section -->
       <div class="stats-container">
         <div class="details">
-          <h1>Todo App</h1>
-          <p>Keep it up!</p>
+          <h1>To-do List</h1>
+          <p>Get 'em done!</p>
           <div class="progressBar">
             <div id="progress" class="progress"></div>
           </div>
@@ -23,21 +24,98 @@
         </div>
       </div>
 
-      <!-- Task input form -->
-      <form action="{% url 'task'%}" method="post">
+      <!-- Task Input Form -->
+      <form action="{% url 'task' %}" method="post">
         {% csrf_token %}
-        <input id="taskInput" type="text" name="inputtask" placeholder="Add in a new task" />
-        <button id="newTask" type="submit" class="btn">+</button>
+        <div class="task-form">
+          <input
+            id="taskInput"
+            type="text"
+            name="inputtask"
+            placeholder="Add in a new task"
+            required
+          />
+          <button id="newTask" type="submit" class="btn">+</button>
+        </div>
+
+        <!-- Category Selection -->
+        <div class="options">
+          <h4>Pick a category</h4>
+          <div class="category-labels">
+            <label>
+              <input
+                type="radio"
+                name="category"
+                id="category1"
+                value="business"
+                required
+              />
+              <span class="bubble business"></span>
+              <div>Homework</div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="category"
+                id="category2"
+                value="personal"
+                required
+              />
+              <span class="bubble personal"></span>
+              <div>Personal</div>
+            </label>
+          </div>
+        </div>
       </form>
 
-
-      <!-- Task list -->
+      <!-- Task List -->
       <ul id="task-list" class="task-list">
         {% for x in task %}
-          <li>{{x.id}}</li>
-          <li>{{x.tasklist}}</li>
+        <li class="taskItem" data-index="{{ forloop.counter0 }}">
+          <!-- Checkbox and Task Text -->
+          <div class="task">
+            <input
+              type="checkbox"
+              class="task-checkbox {% if x.category == 'business' %}business{% elif x.category == 'personal' %}personal{% endif %}"
+              {%
+              if
+              x.completed
+              %}checked{%
+              endif
+              %}
+            />
+            <span class="{% if x.completed %}completed{% endif %}">
+              {{ x.tasklist }}
+            </span>
+          </div>
+
+          <!-- Edit and Delete Buttons -->
+          <div class="task-actions">
+            <!-- Edit Button -->
+            <a href="{% url 'update' x.id %}">
+              <img
+                src="{% static 'images/edit.png' %}"
+                alt="Edit Task"
+                class="action-icon"
+              />
+            </a>
+
+            <!-- Delete Button -->
+            <a
+              href="{% url 'delete' x.id %}"
+              onclick="return confirm('Are you sure you want to delete this task?');"
+            >
+              <img
+                src="{% static 'images/bin.png' %}"
+                alt="Delete Task"
+                class="action-icon"
+              />
+            </a>
+          </div>
+        </li>
+        {% empty %}
+        <p>No tasks yet. Add a new task above!</p>
         {% endfor %}
-        <!-- Task items will be dynamically added here by JavaScript -->
       </ul>
     </div>
 
