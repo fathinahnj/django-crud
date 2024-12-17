@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
 
-# URLConf, gunanya untuk berkomunikasi antar app (pemweb, tasks)
 urlpatterns = [
-    path('', views.task_view, name='task'),  # Default route for the empty path
+    path('', views.task_view, name='task'),
     path("taskrec/", views.taskrec, name='addrec'),
-    path("delete/<int:id>/", views.delete, name="delete")
+    path("delete/<int:id>/", views.delete, name="delete"),
+    path("update/<int:id>/", views.update, name="update"),
 ]

@@ -6,5 +6,10 @@ from django.db import models
 # datasetnya : task_id saja??
 
 class Tasks(models.Model):
-  tasklist=models.CharField(max_length=300, null=True, blank=True)
-  
+    CATEGORY_CHOICES = [
+        ('business', 'Business'),
+        ('personal', 'Personal'),
+    ]
+    tasklist = models.CharField(max_length=300, null=True, blank=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='business')
+    completed = models.BooleanField(default=False)

@@ -4,17 +4,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
+    <title>Update Task</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    
-    <!--
-      yang berbeda dari video itu dan punya ta cuma nama variabel
-        "mem" = "task"
-        "firstname, lastname, country" = "tasklist"
-    -->
-    <script src="{% static 'js/script.js' %}"></script>
+    <div class="container">
+      <h1>Edit Task</h1>
+      <form method="POST" action="{% url 'update' task.id %}">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="inputtask"
+          value="{{ task.tasklist }}"
+          placeholder="Update task"
+          required
+        />
+        <button type="submit" class="btn">Save</button>
+      </form>
+    </div>
   </body>
 </html>
